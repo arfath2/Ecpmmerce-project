@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import Footer from "./components/Layout/Footer/Footer";
+import Header from "./components/Layout/Header/Header";
+import Music from "./components/Layout/Body/Music";
 
 function App() {
+  const style = {
+    'color': 'white',
+    'backgroundColor': '#383e3e',
+    'borderRadius': '5px',
+    'border': 'none',
+    'height': '34px',
+    'width': '244px',
+    'cursor': 'pointer',
+    'alignItem': 'center',
+    'marginLeft': '2%',
+    'marginTop': '5%'
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header/>
+      <Music/>
+      <button style={style}>See The Cart</button>
+      <Footer/>
     </div>
   );
 }
