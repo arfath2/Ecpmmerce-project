@@ -1,6 +1,6 @@
-import React from 'react';
-
-import classes from './MusicProduct.module.css'
+import classes from './MusicProduct.module.css';
+import React, { useContext } from 'react';
+import { Cart } from '../../StoreContext/CartContext';
 
 
 const productsArr = [
@@ -9,6 +9,7 @@ const productsArr = [
     title: "Colors",
     price: 100,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    quantity: 1,
   },
 
   {
@@ -16,6 +17,7 @@ const productsArr = [
     title: "Black and white Colors",
     price: 50,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+    quantity: 1,
   },
 
   {
@@ -23,6 +25,7 @@ const productsArr = [
     title: "Yellow and Black Colors",
     price: 70,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+    quantity: 1,
   },
 
   {
@@ -30,10 +33,12 @@ const productsArr = [
     title: "Blue Color",
     price: 100,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+    quantity: 1,
   },
 ];
 
-const MusicProducts = (props) => {
+const MusicProducts = () => {
+  const {cart, setCart} = useContext(Cart)
   return (
     <section className={classes.musicSection}>
       {productsArr.map((items) => {
@@ -49,12 +54,12 @@ const MusicProducts = (props) => {
                     {items.title} : 
                     ${items.price}
                   </span>
-                  {props.cartMusic.includes(items) ? (
+                  {cart.includes(items) ? (
                     <button className={classes.musicBtn} onClick={()=> {
-                      props.setCartMusic(props.cartMusic.filter((c) => c.album !==items.album));
+                      setCart(cart.filter((c) => c.album !==items.album));
                     }}>Remove From Cart</button>
                   ): <button className={classes.musicBtn} onClick={()=> {
-                    props.setCartMusic([...props.cartMusic, items])
+                    setCart([...cart, items])
                   }}>ADD TO CART</button>}
 
                 </li>

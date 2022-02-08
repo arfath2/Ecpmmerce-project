@@ -1,10 +1,11 @@
 import Footer from "./components/Layout/Footer/Footer";
 import Header from "./components/Layout/Header/Header";
-import Music from "./components/Layout/Body/Music";
-import { useState } from "react";
+import Store from "./components/Tabs/Store";
+import { Fragment, useState } from "react";
 import HomePage from "./components/Tabs/Home";
 import About from "./components/Tabs/About";
-import Cart from "./components/Cart/Cart";
+import CartList from "./components/Cart/Cart";
+import CartContext from "./components/StoreContext/CartContext";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App() {
@@ -20,39 +21,30 @@ function App() {
     'marginLeft': '2%',
     'marginTop': '5%'
   }
-  const cartElements = [
-    {
-      title: "Colors",
-
-      price: 100,
-
-      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-      quantity: 2,
-    },
-
-  ];
 
   const[cartItems, setCartItems] = useState(false);
-  const [cart, setCart] = useState(cartElements)
   const CartItems = () =>{
     setCartItems(true);
   }
   const cartItemsClose = () =>{
     setCartItems(false)
   }
-  return (
-    <div>
+  return (<Fragment>
+    
+    <CartContext>
+    <Router>
       <Header showCartItem={CartItems}/>
-      {cartItems && <Cart Close = {cartItemsClose}/>}
+      {cartItems && <CartList Close = {cartItemsClose}/>}
       <Routes>
-        <Route exact path="/" element={<Music cart = {cart} setCart = {setCart} />} />
+        <Route exact path="/" element={<Store />} />
         <Route exact path="/about" element={<About/>} />
         <Route exact path="/homepage" element={<HomePage/>} />
       </Routes>
+    </Router> 
       <button style={style}>See The Cart</button>
       <Footer/>
-    </div>
+      </CartContext>
+      </Fragment>
   );
 }
 

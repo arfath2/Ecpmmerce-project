@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Header.module.css";
 import { Link } from "react-router-dom";
+import { Cart } from "../../StoreContext/CartContext";
 
 
 const Header = (props) => {
- // const cartLength = props.cartNumber.length;
+  const {cart} = useContext(Cart)
   return (
       <div className={classes.headBody}>
         <div className={classes.innerHeader}>
@@ -15,7 +16,7 @@ const Header = (props) => {
           <a href="/homepage"><li>HOME</li></a>
             <Link to="/"><li>STORE</li></Link>
             <Link to="/about"><li>ABOUT</li></Link>
-            <button className={classes.cartBtn} onClick={props.showCartItem}><li>Cart <span>3</span></li></button>
+            <button className={classes.cartBtn} onClick={props.showCartItem}><li>Cart <span>{cart.length}</span></li></button>
           </ul>
 
         </div>

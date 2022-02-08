@@ -6,7 +6,7 @@ const Music = (props) => {
 
         <div className={classes.musicBody}>
             <h2>MUSIC</h2>
-            <MusicProducts AddToCart = {props.AddToCartStore} cartMusic = {props.cartApp} setCartMusic = {props.setCartApp}/>
+            <MusicProducts />
         </div>
 
     )

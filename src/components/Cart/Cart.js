@@ -1,9 +1,12 @@
 import React from "react";
 import classes from "./Cart.module.css";
 import { Container, Row, Col, Button } from "reactstrap";
+import { Cart } from "../StoreContext/CartContext";
+import { useContext } from "react";
 
 
-const Cart = (props) => {
+const CartList = (props) => {
+  const {cart} = useContext(Cart)
 
   const styleBtn = {
     'marginLeft': '72%',
@@ -29,7 +32,7 @@ const Cart = (props) => {
           <hr />
         </Col>
       </Row>
-      {props.item.map((items) => {
+      {cart.map((items) => {
         return (
           <Container style={{ marginTop: "20px" }}>
             <Row>
@@ -58,4 +61,4 @@ const Cart = (props) => {
   );
 };
 
-export default Cart;
+export default CartList;
