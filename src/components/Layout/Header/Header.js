@@ -1,20 +1,21 @@
 import React from "react";
-import Classes from "./Header.module.css";
-import Cart from "../../Cart/Cart";
+import classes from "./Header.module.css";
+import { Link } from "react-router-dom";
 
 
 const Header = (props) => {
+ // const cartLength = props.cartNumber.length;
   return (
-      <div className={Classes.headBody}>
-        <div className={Classes.innerHeader}>
-          <div className={Classes.logoContainer}>
+      <div className={classes.headBody}>
+        <div className={classes.innerHeader}>
+          <div className={classes.logoContainer}>
             <span>EcomStore</span>
           </div>
-          <ul className={Classes.navigation}>
-            <a href="#"><li>HOME</li></a>
-            <a href="#"><li>STORE</li></a>
-            <a href="#"><li>ABOUT</li></a>
-            <button className={Classes.cartBtn} onClick={props.showCartItem}><li>Cart <span>3</span></li></button>
+          <ul className={classes.navigation}>
+          <a href="/homepage"><li>HOME</li></a>
+            <Link to="/"><li>STORE</li></Link>
+            <Link to="/about"><li>ABOUT</li></Link>
+            <button className={classes.cartBtn} onClick={props.showCartItem}><li>Cart <span>3</span></li></button>
           </ul>
 
         </div>
