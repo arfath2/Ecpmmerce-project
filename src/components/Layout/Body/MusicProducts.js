@@ -1,6 +1,7 @@
 import classes from './MusicProduct.module.css';
 import React, { useContext } from 'react';
 import { Cart } from '../../StoreContext/CartContext';
+import axios from 'axios';
 
 
 const productsArr = [
@@ -38,7 +39,23 @@ const productsArr = [
 ];
 
 const MusicProducts = () => {
-  const {cart, setCart} = useContext(Cart)
+  const {cart, setCart, userId, setUserId} = useContext(Cart)
+
+  function addItemHandler(product) {
+
+      setCart([...cart, product])
+      console.log(`Id: ${userId}`)
+      axios.post(`https://crudcrud.com/api/0a02abc72e4b4103862469a3e8c178e9/cart${userId}`, product)
+      .then((response) => {
+        console.log(`Axios: ${response}`)
+      }).catch((err) => {
+        console.log(`err: ${err}`)
+      })
+  }
+
+  const removeItemHandler = (items)=>{
+    setCart(cart.filter((c) => c.album !==items.album))
+  }
   return (
     <section className={classes.musicSection}>
       {productsArr.map((items) => {
@@ -55,12 +72,10 @@ const MusicProducts = () => {
                     ${items.price}
                   </span>
                   {cart.includes(items) ? (
-                    <button className={classes.musicBtn} onClick={()=> {
-                      setCart(cart.filter((c) => c.album !==items.album));
-                    }}>Remove From Cart</button>
-                  ): <button className={classes.musicBtn} onClick={()=> {
-                    setCart([...cart, items])
-                  }}>ADD TO CART</button>}
+                     <button className={classes.musicBtn} onClick={() => removeItemHandler(items)}
+                     >Remove From Cart</button>
+                   ): <button className={classes.musicBtn} onClick={() => addItemHandler(items)}
+                   >ADD TO CART</button>}
 
                 </li>
               </ul>

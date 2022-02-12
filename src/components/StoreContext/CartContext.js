@@ -8,6 +8,8 @@ const CartContext = (props) => {
 
     const cartElements = [
         {
+          id: 'e1',
+
           title: "Colors",
 
           price: 100,
@@ -19,9 +21,10 @@ const CartContext = (props) => {
 
       ];
 
-    const [cart, setCart] = useState(cartElements)
+    const [cart, setCart] = useState(cartElements);
+    const [userId, setUserId] = useState('')
     return (
-        <Cart.Provider value = {{cart, setCart}}>
+      <Cart.Provider value = {{cart, setCart, userId , setUserId}}>
             {props.children}
         </Cart.Provider>
     )
