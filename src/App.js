@@ -8,6 +8,7 @@ import About from "./components/Tabs/About";
 import CartList from "./components/Cart/Cart";
 import CartContext from "./components/StoreContext/CartContext";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Login from "./components/Tabs/Login"
 
 function App() {
   const style = {
@@ -55,6 +56,7 @@ function App() {
         <Route exact path="/about" element={<About/>} />
         <Route exact path="/homepage" element={<HomePage/>} />
         <Route exact path="/contact" element={<Contact putRequest = {putRequestHandler}/>} />
+        <Route exact path="/login" element={<Login />} />
       </Routes>
     </Router> 
       <button style={style}>See The Cart</button>
