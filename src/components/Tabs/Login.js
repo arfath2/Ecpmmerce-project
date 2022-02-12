@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import {useNavigate} from 'react-router-dom'
 
-const Login = () => {
+const Login = (props) => {
 
     const loginEmailRef = useRef();
     const loginPassRef = useRef();
@@ -39,7 +39,8 @@ const Login = () => {
 
         }).then((data) => {
             console.log(data)
-            navigate('/')
+            props.checkLogin(true)
+            navigate('/store')
 
         }).catch((err) => {
             alert(err.message)

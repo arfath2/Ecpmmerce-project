@@ -14,8 +14,8 @@ const Header = (props) => {
             <span>EcomStore</span>
           </div>
           <ul className={classes.navigation}>
-            <NavLink className={(navData) => navData.isActive ? "active" : "" } to="/homepage"><li>Home</li></NavLink>
-            <NavLink className={(navData) => navData.isActive ? "active" : "" } to="/"><li>Store</li></NavLink>
+            <NavLink className={(navData) => navData.isActive ? "active" : "" } to="/"><li>Home</li></NavLink>
+            <NavLink className={(navData) => navData.isActive ? "active" : "" } to="/store"><li>Store</li></NavLink>
             <NavLink className={(navData) => navData.isActive ? "active" : "" } to="/about"><li>About</li></NavLink>
             <NavLink className={(navData) => navData.isActive ? "active" : "" } to="/contact"><li>Contact</li></NavLink>
             <NavLink className={(navData) => navData.isActive ? "active" : "" } to="/login"><li>Login</li></NavLink>
