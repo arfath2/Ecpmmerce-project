@@ -1,6 +1,6 @@
 import Music from "../Layout/Body/Music";
 
-const Store = () =>{
+const Store = (props) =>{
     return(
         <>
         <Music />
